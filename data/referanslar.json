@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "prisma-mobilya-fabrikasi",
+    "name": "Prisma Mobilya Fabrikası",
+    "brand": "Prisma Mobilya",
+    "sector": "Endüstriyel üretim",
+    "promise": "Üretim hattınıza uygun, hızlı kurulan çelik omurga.",
+    "logo": "/referanslar/prisma-mobilya.webp",
+    "cover": "/referanslar/prisma-1.webp",
+    "gallery": [
+      "/referanslar/prisma-1.webp",
+      "/referanslar/prisma-2.webp",
+      "/referanslar/prisma-3.webp",
+      "/referanslar/prisma-4.webp",
+      "/referanslar/prisma-5.webp"
+    ],
+    "visual": "logo"
+  },
+  {
+    "slug": "ptt-adana-il-mudurlugu",
+    "name": "PTT Adana İl Müdürlüğü",
+    "brand": "PTT",
+    "sector": "Kamu ve lojistik",
+    "promise": "Kamu teslimatında planlı saha ve tek elden uygulama.",
+    "logo": "/referanslar/ptt-adana.webp",
+    "cover": "/referanslar/ptt-1.webp",
+    "gallery": [
+      "/referanslar/ptt-1.webp",
+      "/referanslar/ptt-2.webp",
+      "/referanslar/ptt-3.webp"
+    ],
+    "visual": "logo"
+  },
+  {
+    "slug": "aglasan-hayvancilik-tesisi",
+    "name": "Ağlaşan Hayvancılık Tesisi",
+    "brand": "Ağlaşan Çiftliği",
+    "sector": "Hayvancılık",
+    "promise": "Çiftlik operasyonuna göre açık, dayanıklı çelik yapı.",
+    "logo": "/referanslar/aglasan.webp",
+    "cover": "/referanslar/aglasan-1.webp",
+    "gallery": [
+      "/referanslar/aglasan-1.webp",
+      "/referanslar/aglasan-2.webp",
+      "/referanslar/aglasan-3.webp",
+      "/referanslar/aglasan-4.webp",
+      "/referanslar/aglasan-5.webp"
+    ],
+    "visual": "logo"
+  },
+  {
+    "slug": "hayvancilik-tesisi",
+    "name": "Hayvancılık Tesisi",
+    "brand": "Hayvancılık Tesisi",
+    "sector": "Tarım ve hayvancılık",
+    "promise": "Saha koşullarına göre projelendirilmiş tesis çözümü.",
+    "logo": "/referanslar/hayvancilik-tesisi.webp",
+    "cover": "/referanslar/hayvancilik-1.webp",
+    "gallery": [
+      "/referanslar/hayvancilik-1.webp",
+      "/referanslar/hayvancilik-2.webp",
+      "/referanslar/hayvancilik-3.webp"
+    ],
+    "visual": "photo"
+  },
+  {
+    "slug": "kgm-tursan-kule",
+    "name": "KGM Türsan Kule",
+    "brand": "KGM",
+    "sector": "Altyapı",
+    "promise": "Altyapı ve kule işlerinde hesaplanmış çelik teslimat.",
+    "logo": "/referanslar/kgm-tursan.webp",
+    "cover": "/referanslar/kgm-1.webp",
+    "gallery": [
+      "/referanslar/kgm-1.webp",
+      "/referanslar/kgm-2.webp",
+      "/referanslar/kgm-3.webp",
+      "/referanslar/kgm-4.webp",
+      "/referanslar/kgm-5.webp",
+      "/referanslar/kgm-6.webp",
+      "/referanslar/kgm-7.webp",
+      "/referanslar/kgm-8.webp"
+    ],
+    "visual": "logo"
+  }
+]
