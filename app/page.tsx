@@ -6,7 +6,7 @@ import Faq from "@/components/Faq";
 import { referanslariOku } from "@/lib/referanslar";
 import { anaSayfaUrunleri, genelOku, sssOku, urunleriOku } from "@/lib/icerik";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function Home() {
   const [referanslar, genel, urunler, sss] = await Promise.all([

@@ -12,7 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://t7insaat.com"),

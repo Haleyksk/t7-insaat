@@ -3,7 +3,7 @@ import IletisimForm from "@/components/IletisimForm";
 import { telefonLink } from "@/constants/content";
 import { genelOku } from "@/lib/icerik";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "İletişim",

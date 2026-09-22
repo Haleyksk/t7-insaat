@@ -56,18 +56,24 @@ export default function ReferansKart({ item, adim, oncelik = false }: Props) {
           style={{ transform: `translateX(-${kaydir * 100}%)` }}
           onTransitionEnd={kaymaBitti}
         >
-          {slaytlar.map((src, index) => (
-            <div key={`${src}-${index}`} className="relative h-full w-full shrink-0">
-              <Image
-                src={src}
-                alt={`${item.name} ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                priority={oncelik && index === 0}
-              />
-            </div>
-          ))}
+          {slaytlar.map((src, index) => {
+            const yakin = Math.abs(index - kaydir) <= 1;
+            return (
+              <div key={`${src}-${index}`} className="relative h-full w-full shrink-0 bg-brand-card">
+                {yakin ? (
+                  <Image
+                    src={src}
+                    alt={`${item.name} ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    quality={70}
+                    priority={oncelik && index === 0}
+                  />
+                ) : null}
+              </div>
+            );
+          })}
         </div>
 
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/25 to-transparent" />

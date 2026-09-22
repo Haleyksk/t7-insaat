@@ -1,24 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Reference } from "@/constants/content";
 import ReferansKart from "@/components/ReferansKart";
 
 const KAYMA_SURESI = 3000;
+const ANA_SAYFA_LIMIT = 4;
 
 export default function FeaturedProjects({ referanslar }: { referanslar: Reference[] }) {
   const [adim, setAdim] = useState(0);
+  const [gorunur, setGorunur] = useState(false);
+  const alanRef = useRef<HTMLElement>(null);
+  const liste = referanslar.slice(0, ANA_SAYFA_LIMIT);
 
   useEffect(() => {
+    const alan = alanRef.current;
+    if (!alan) return;
+    const gozlemci = new IntersectionObserver(([kayit]) => setGorunur(kayit.isIntersecting), {
+      rootMargin: "120px",
+    });
+    gozlemci.observe(alan);
+    return () => gozlemci.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!gorunur) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const zaman = window.setInterval(() => setAdim((onceki) => onceki + 1), KAYMA_SURESI);
     return () => window.clearInterval(zaman);
-  }, []);
+  }, [gorunur]);
 
   return (
-    <section id="projeler" className="scroll-mt-24 bg-brand-dark py-20 lg:py-28">
+    <section ref={alanRef} id="projeler" className="scroll-mt-24 bg-brand-dark py-20 lg:py-28">
       <div className="container">
         <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
@@ -44,7 +59,7 @@ export default function FeaturedProjects({ referanslar }: { referanslar: Referen
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {referanslar.map((item, index) => (
+          {liste.map((item, index) => (
             <ReferansKart key={item.slug} item={item} adim={adim} oncelik={index === 0} />
           ))}
         </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { referanslariOku } from "@/lib/referanslar";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Referanslar",
@@ -60,9 +60,9 @@ export default async function ProjelerPage() {
                   <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">{item.promise}</p>
                 </div>
                 <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
-                  {item.gallery.map((src) => (
+                  {item.gallery.slice(0, 4).map((src) => (
                     <div key={src} className="relative aspect-[4/3] overflow-hidden">
-                      <Image src={src} alt="" fill className="object-cover" sizes="120px" />
+                      <Image src={src} alt="" fill className="object-cover" sizes="80px" />
                     </div>
                   ))}
                 </div>

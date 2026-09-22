@@ -50,7 +50,7 @@ export default function MobilMenu({ acik, kapat, menu }: Props) {
       >
         <div className="flex items-center justify-between border-b border-white/10 px-5 pb-4 pt-[max(1.25rem,env(safe-area-inset-top))]">
           <Link href="/" onClick={kapat} className="flex items-center gap-2">
-            <Image src="/logo-mark.png" alt="" width={983} height={448} className="h-5 w-auto" />
+            <Image src="/logo-mark.png" alt="" width={80} height={36} className="h-5 w-auto" sizes="72px" />
             <span className="text-[10px] font-medium tracking-[0.2em] text-white">T7 İNŞAAT</span>
           </Link>
           <button

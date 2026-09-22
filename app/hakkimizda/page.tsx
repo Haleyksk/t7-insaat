@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { genelOku } from "@/lib/icerik";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Hakkımızda",

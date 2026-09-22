@@ -50,9 +50,10 @@ export default function Header({ menu }: { menu: MenuGrup[] }) {
           <Image
             src="/logo-mark.png"
             alt="T7 İnşaat"
-            width={983}
-            height={448}
+            width={80}
+            height={36}
             className="h-6 w-auto lg:h-7"
+            sizes="80px"
             priority
           />
           <span className="text-[11px] font-medium tracking-[0.18em] text-white lg:text-[12px]">
