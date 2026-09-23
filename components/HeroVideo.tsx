@@ -3,8 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 
 const POSTER = "/hero-poster.jpg";
-const MASAUSTU = "/hero.mp4?v=4";
-const MOBIL = "/hero-mobile.mp4?v=1";
+const VIDEO = "/hero.mp4?v=5";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,12 +14,6 @@ export default function HeroVideo() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       video.pause();
       return;
-    }
-
-    const mobil = window.matchMedia("(max-width: 767px)").matches;
-    const hedef = mobil ? MOBIL : MASAUSTU;
-    if (!video.currentSrc.includes(hedef.split("?")[0] ?? "")) {
-      video.src = hedef;
     }
     void video.play().catch(() => undefined);
   }, []);
@@ -37,8 +30,7 @@ export default function HeroVideo() {
       poster={POSTER}
       aria-hidden
     >
-      <source src={MOBIL} type="video/mp4" media="(max-width: 767px)" />
-      <source src={MASAUSTU} type="video/mp4" media="(min-width: 768px)" />
+      <source src={VIDEO} type="video/mp4" />
     </video>
   );
 }

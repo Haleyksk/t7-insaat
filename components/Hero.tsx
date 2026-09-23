@@ -7,8 +7,7 @@ const POSTER = "/hero-poster.jpg";
 export default function Hero({ genel }: { genel: Genel }) {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      <link rel="preload" href="/hero-mobile.mp4?v=1" as="video" type="video/mp4" media="(max-width: 767px)" />
-      <link rel="preload" href="/hero.mp4?v=4" as="video" type="video/mp4" media="(min-width: 768px)" />
+      <link rel="preload" href="/hero.mp4?v=5" as="video" type="video/mp4" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={POSTER}
