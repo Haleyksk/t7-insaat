@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes hero-mask {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-mask-cik {
+  to {
+    transform: translateY(-115%);
+  }
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes hero-dol {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-mask-gir {
+  animation: hero-mask 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-mask-cik {
+  animation: hero-mask-cik 0.4s ease-in both;
+}
+
+.hero-kenburns {
+  animation: hero-kenburns 6.8s ease-out both;
+}
+
+.hero-dol {
+  transform-origin: left;
+  animation: hero-dol linear both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mask-gir,
+  .hero-mask-cik,
+  .hero-kenburns,
+  .hero-dol {
+    animation: none;
+  }
+}

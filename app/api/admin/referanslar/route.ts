@@ -28,6 +28,8 @@ export async function POST(istek: Request) {
     cover: gelen.cover || gelen.gallery?.[0] || gelen.logo || "/logo-mark.png",
     gallery: gelen.gallery?.length ? gelen.gallery : [gelen.cover || gelen.logo || "/logo-mark.png"],
     visual: gelen.visual === "photo" ? "photo" : "logo",
+    video: gelen.video || undefined,
+    yazi: gelen.yazi || undefined,
   };
 
   const indeks = liste.findIndex((item) => item.slug === slug);

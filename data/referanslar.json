@@ -82,5 +82,44 @@
       "/referanslar/kgm-8.webp"
     ],
     "visual": "logo"
+  },
+  {
+    "slug": "anahtar-teslim-villa",
+    "name": "Anahtar Teslim Villa Projesi",
+    "brand": "Konut",
+    "sector": "Konut",
+    "promise": "1.000 m² arsa üzerinde 400 m²; müteahhitlik, yapım ve peyzaj dahil tüm süreçlerini üstlendiğimiz projemizi anahtar teslim tamamladık.",
+    "yazi": "İstanbul’un yoğunluğundan uzaklaşıp doğayla iç içe bir yaşam isteyen müşterimizin hayalini gerçeğe dönüştürdük.",
+    "logo": "/logo-mark.png",
+    "cover": "/referanslar/villa-1.jpg",
+    "gallery": ["/referanslar/villa-1.jpg"],
+    "visual": "logo",
+    "video": "/villa.mp4"
+  },
+  {
+    "slug": "my-dream-villalari",
+    "name": "My Dream Villaları",
+    "brand": "Villa sitesi",
+    "sector": "Villa sitesi",
+    "promise": "Taahhüdünü üstlendiğimiz My Dream Villaları projesini tamamlayarak teslim ettik.",
+    "yazi": "10 dönümlük arazi üzerinde, toplam 8.550 m² inşaat alanına sahip; 3 müstakil ve 8 ikiz villadan oluşan projenin hafriyattan çatı kaplamasına kadar tüm yapım süreçlerini T7 İnşaat olarak gerçekleştirdik.",
+    "logo": "/logo-mark.png",
+    "cover": "/referanslar/mydream-1.jpg",
+    "gallery": ["/referanslar/mydream-1.jpg"],
+    "visual": "logo",
+    "video": "/mydream.mp4"
+  },
+  {
+    "slug": "tursan-park-sarj-istasyonu",
+    "name": "Türsan Park Dinlenme Tesisleri",
+    "brand": "Şarj istasyonu",
+    "sector": "Şarj istasyonu",
+    "promise": "Türkiye’nin en büyük toplu elektrikli araç şarj istasyonu projelerinden biri Türsan Park Dinlenme Tesisleri’nde hayata geçti.",
+    "yazi": "Aynı anda 96 elektrikli araca şarj imkânı sunan projenin çelik konstrüksiyon imalatı, montajı ve altyapı işleri T7 İnşaat tarafından gerçekleştirildi. Geleceğin ulaşım altyapısını, güçlü mühendislik ve kaliteli üretimle bugünden inşa ediyoruz.",
+    "logo": "/logo-mark.png",
+    "cover": "/referanslar/istasyon-1.jpg",
+    "gallery": ["/referanslar/istasyon-1.jpg"],
+    "visual": "logo",
+    "video": "/istasyon.mp4"
   }
 ]

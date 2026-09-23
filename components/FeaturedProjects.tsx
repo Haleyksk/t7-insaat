@@ -7,13 +7,15 @@ import type { Reference } from "@/constants/content";
 import ReferansKart from "@/components/ReferansKart";
 
 const KAYMA_SURESI = 3000;
-const ANA_SAYFA_LIMIT = 4;
+const ILK_GRUP = 5;
 
 export default function FeaturedProjects({ referanslar }: { referanslar: Reference[] }) {
   const [adim, setAdim] = useState(0);
   const [gorunur, setGorunur] = useState(false);
+  const [fazlaAcik, setFazlaAcik] = useState(false);
   const alanRef = useRef<HTMLElement>(null);
-  const liste = referanslar.slice(0, ANA_SAYFA_LIMIT);
+  const liste = fazlaAcik ? referanslar : referanslar.slice(0, ILK_GRUP);
+  const fazlaVar = referanslar.length > ILK_GRUP;
 
   useEffect(() => {
     const alan = alanRef.current;
@@ -63,6 +65,19 @@ export default function FeaturedProjects({ referanslar }: { referanslar: Referen
             <ReferansKart key={item.slug} item={item} adim={adim} oncelik={index === 0} />
           ))}
         </div>
+
+        {fazlaVar && !fazlaAcik ? (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setFazlaAcik(true)}
+              className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-zinc-100 transition-colors hover:border-brand-mint hover:text-brand-mint"
+            >
+              Daha fazla gör
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProjeVideo from "@/components/ProjeVideo";
 import { referansBul, referanslariOku } from "@/lib/referanslar";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -46,26 +47,33 @@ export default async function ProjeDetayPage({ params }: Props) {
           </div>
         </div>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-300">{item.promise}</p>
-        <p className="mt-2 text-sm text-zinc-500">{item.gallery.length} saha fotoğrafı · T7 İnşaat teslimatı</p>
+        {item.yazi ? <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">{item.yazi}</p> : null}
+        <p className="mt-2 text-sm text-zinc-500">
+          {item.video ? "Proje videosu" : `${item.gallery.length} saha fotoğrafı`} · T7 İnşaat teslimatı
+        </p>
 
-        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {kapak && (
-            <div className="relative aspect-[16/10] overflow-hidden border border-white/10 sm:col-span-2 lg:col-span-3 lg:aspect-[21/9]">
-              <Image src={kapak} alt={item.name} fill className="object-cover" sizes="100vw" priority />
-            </div>
-          )}
-          {digerleri.map((src, index) => (
-            <div key={src} className="relative aspect-[16/11] overflow-hidden border border-white/10">
-              <Image
-                src={src}
-                alt={`${item.name} ${index + 2}`}
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 33vw, 50vw"
-              />
-            </div>
-          ))}
-        </div>
+        {item.video ? <ProjeVideo src={item.video} poster={item.cover} baslik={item.name} /> : null}
+
+        {!item.video ? (
+          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {kapak && (
+              <div className="relative aspect-[16/10] overflow-hidden border border-white/10 sm:col-span-2 lg:col-span-3 lg:aspect-[21/9]">
+                <Image src={kapak} alt={item.name} fill className="object-cover" sizes="100vw" priority />
+              </div>
+            )}
+            {digerleri.map((src, index) => (
+              <div key={src} className="relative aspect-[16/11] overflow-hidden border border-white/10">
+                <Image
+                  src={src}
+                  alt={`${item.name} ${index + 2}`}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, 50vw"
+                />
+              </div>
+            ))}
+          </div>
+        ) : null}
       </section>
 
       {others.length > 0 && (
