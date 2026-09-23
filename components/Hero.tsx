@@ -1,35 +1,23 @@
 import Link from "next/link";
 import type { Genel } from "@/constants/content";
+import HeroVideo from "@/components/HeroVideo";
 
-const HERO_VIDEO = "/hero.mp4?v=4";
-const HERO_POSTER = "/hero-poster.jpg";
-const MASAUSTU =
-  "(min-width: 768px) and (prefers-reduced-motion: no-preference)";
+const POSTER = "/hero-poster.jpg";
 
 export default function Hero({ genel }: { genel: Genel }) {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      <link rel="preload" href={HERO_VIDEO} as="video" type="video/mp4" media={MASAUSTU} />
+      <link rel="preload" href="/hero-mobile.mp4?v=1" as="video" type="video/mp4" media="(max-width: 767px)" />
+      <link rel="preload" href="/hero.mp4?v=4" as="video" type="video/mp4" media="(min-width: 768px)" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={HERO_POSTER}
+        src={POSTER}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
         fetchPriority="high"
         decoding="async"
       />
-      <video
-        className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:hidden md:block"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster={HERO_POSTER}
-        aria-hidden
-      >
-        <source src={HERO_VIDEO} type="video/mp4" media={MASAUSTU} />
-      </video>
+      <HeroVideo />
       <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/75 via-brand-dark/35 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/55 via-transparent to-black/20" />
 
