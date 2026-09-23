@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 
 const POSTER = "/hero-poster.jpg";
-const VIDEO = "/hero.mp4?v=5";
+const VIDEO = "/hero.mp4?v=6";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,7 +15,12 @@ export default function HeroVideo() {
       video.pause();
       return;
     }
-    void video.play().catch(() => undefined);
+    const baslat = () => {
+      void video.play().catch(() => undefined);
+    };
+    baslat();
+    video.addEventListener("canplay", baslat);
+    return () => video.removeEventListener("canplay", baslat);
   }, []);
 
   return (
