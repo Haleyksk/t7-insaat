@@ -31,19 +31,18 @@ export default function BlogIzgarasi({ yazilar }: { yazilar: AkisYazi[] }) {
     <>
       <ul className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-4">
         {yazilar.map((yazi) => (
-          <li key={yazi.slug}>
-            <button type="button" onClick={() => setAcik(yazi)} className="block w-full overflow-hidden border border-white/10 bg-brand-card text-left transition hover:border-brand-mint/40">
-              <div className="relative aspect-[5/4] bg-black">
+          <li key={yazi.slug} className="flex">
+            <button type="button" onClick={() => setAcik(yazi)} className="flex h-full w-full flex-col overflow-hidden border border-white/10 bg-brand-card text-left transition hover:border-brand-mint/40">
+              <div className="relative aspect-[5/4] shrink-0 bg-black">
                 {yazi.kapak ? (
                   <Image src={yazi.kapak} alt="" fill className="object-cover" sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, 50vw" />
                 ) : (
-                  <span className="grid h-full place-items-end p-3 text-sm font-semibold text-white">{yazi.baslik}</span>
+                  <span className="grid h-full place-items-end p-3 text-sm font-semibold uppercase text-white">{yazi.baslik}</span>
                 )}
               </div>
-              <div className="p-3">
-                <p className="text-[10px] uppercase tracking-[0.14em] text-brand-mint">{yazi.bolumler.length} kare</p>
-                <h2 className="mt-1.5 text-sm font-semibold leading-snug text-white">{yazi.baslik}</h2>
-                <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-zinc-400">{yazi.cevap}</p>
+              <div className="flex flex-1 flex-col p-3">
+                <h2 className="line-clamp-3 min-h-[4.125em] text-[15px] font-semibold uppercase leading-snug tracking-tight text-brand-mint">{yazi.baslik}</h2>
+                <p className="mt-1.5 line-clamp-2 min-h-[3.25em] text-[13px] leading-relaxed text-zinc-400">{yazi.cevap}</p>
               </div>
             </button>
           </li>
@@ -54,7 +53,7 @@ export default function BlogIzgarasi({ yazilar }: { yazilar: AkisYazi[] }) {
         <div className="fixed inset-0 z-[80] flex items-end justify-center bg-black/70 sm:items-center sm:p-6" onClick={() => setAcik(null)}>
           <div role="dialog" aria-modal="true" aria-labelledby="post-baslik" className="flex max-h-[100dvh] w-full flex-col overflow-y-auto bg-brand-dark sm:max-h-full sm:max-w-3xl sm:overflow-hidden" onClick={(olay) => olay.stopPropagation()}>
             <div className="flex shrink-0 items-center justify-between px-4 py-3">
-              <h2 id="post-baslik" className="text-sm font-semibold text-white">{acik.baslik}</h2>
+              <h2 id="post-baslik" className="text-sm font-semibold uppercase text-white">{acik.baslik}</h2>
               <button type="button" aria-label="Kapat" onClick={() => setAcik(null)} className="text-zinc-300">
                 <X className="h-5 w-5" />
               </button>

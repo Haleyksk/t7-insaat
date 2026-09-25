@@ -45,7 +45,7 @@ export default function KaydirmaliKart({
         </div>
 
         <div key={bolum.id} className={`mx-auto mt-6 max-w-xl ${sigdir ? "sm:mt-4 sm:flex sm:min-h-0 sm:w-full sm:flex-1 sm:flex-col" : ""}`}>
-          <h2 className="shrink-0 text-xl font-semibold tracking-tight">{bolum.baslik}</h2>
+          <h2 className="shrink-0 text-xl font-semibold uppercase tracking-tight">{bolum.baslik}</h2>
           {video && aktif === 0 ? (
             <video className={`mt-4 aspect-[4/3] w-full object-cover ${sigdir ? "sm:aspect-auto sm:h-[min(22rem,calc(100dvh-26rem))] sm:min-h-[8rem] sm:flex-none" : ""}`} src={video} poster={bolum.gorsel?.src} controls playsInline />
           ) : bolum.gorsel ? (
