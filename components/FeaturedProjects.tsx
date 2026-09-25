@@ -6,16 +6,24 @@ import { ArrowUpRight } from "lucide-react";
 import type { Reference } from "@/constants/content";
 import ReferansKart from "@/components/ReferansKart";
 
+/** Ana sayfada önce görünen dört referans. Geri kalanı "Daha fazla gör" açar. */
 const KAYMA_SURESI = 3000;
-const ILK_GRUP = 5;
+const ILK_SIRALAMA = [
+  "kgm-tursan-kule",
+  "tursan-park-sarj-istasyonu",
+  "ptt-adana-il-mudurlugu",
+  "my-dream-villalari",
+];
 
 export default function FeaturedProjects({ referanslar }: { referanslar: Reference[] }) {
   const [adim, setAdim] = useState(0);
   const [gorunur, setGorunur] = useState(false);
   const [fazlaAcik, setFazlaAcik] = useState(false);
   const alanRef = useRef<HTMLElement>(null);
-  const liste = fazlaAcik ? referanslar : referanslar.slice(0, ILK_GRUP);
-  const fazlaVar = referanslar.length > ILK_GRUP;
+  const oneCikan = ILK_SIRALAMA.flatMap((slug) => referanslar.filter((item) => item.slug === slug));
+  const sirali = [...oneCikan, ...referanslar.filter((item) => !ILK_SIRALAMA.includes(item.slug))];
+  const liste = fazlaAcik ? sirali : oneCikan;
+  const fazlaVar = sirali.length > oneCikan.length;
 
   useEffect(() => {
     const alan = alanRef.current;

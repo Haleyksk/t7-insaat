@@ -33,7 +33,7 @@ export default function IletisimForm() {
   };
 
   return (
-    <form onSubmit={gonder} className="space-y-4 border border-white/10 bg-brand-card p-8">
+    <form onSubmit={gonder} className="space-y-4 border border-white/10 bg-brand-card p-5 sm:p-8">
       <div className="hidden" aria-hidden>
         <input name="web" tabIndex={-1} autoComplete="off" />
       </div>

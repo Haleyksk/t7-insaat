@@ -17,7 +17,7 @@ export default async function ProjelerPage() {
     <main className="pt-28 lg:pt-32">
       <section className="container py-16 lg:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-brand-mint">Müşterilerimiz</p>
-        <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-white lg:text-5xl">
+        <h1 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
           Birlikte teslim ettiğimiz yapılar.
         </h1>
         <p className="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-400 lg:text-base">
@@ -74,7 +74,7 @@ export default async function ProjelerPage() {
                   <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">{item.promise}</p>
                 </div>
                 {!item.video ? (
-                  <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                     {item.gallery.slice(0, 4).map((src) => (
                       <div key={src} className="relative aspect-[4/3] overflow-hidden">
                         <Image src={src} alt="" fill className="object-cover" sizes="80px" />

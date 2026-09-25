@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dar ekranda yatay kaymayı keser; görseller kutunun dışına taşmaz. */
+html,
+body {
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
 @keyframes hero-mask {
   from {
     transform: translateY(115%);

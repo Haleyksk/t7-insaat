@@ -18,7 +18,7 @@ export default async function IletisimPage() {
       <section className="container grid gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
           <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-brand-mint">İletişim</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">Teklif ve proje görüşmesi</h1>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Teklif ve proje görüşmesi</h1>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-zinc-400">
             Üretim, uygulama ve teslimat süreçlerini {genel.location} tesisimizden yönetiyoruz. Ölçü, kapasite ve teslim
             tarihi için bize yazın.

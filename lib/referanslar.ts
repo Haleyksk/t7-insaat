@@ -1,7 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { Reference } from "@/constants/content";
-export { slugYap } from "@/lib/slug";
 
 const dosyaYolu = path.join(process.cwd(), "data", "referanslar.json");
 

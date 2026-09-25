@@ -34,6 +34,15 @@ export default function Header({ menu }: { menu: MenuGrup[] }) {
 
   const closeMobile = () => setMobileOpen(false);
 
+  /** Logo: başka sayfadaysa ana sayfaya gider, ana sayfadaysa en üste kaydırır. */
+  const anaEkran = (olay: React.MouseEvent<HTMLAnchorElement>) => {
+    closeMobile();
+    if (pathname === "/") {
+      olay.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   if (pathname?.startsWith("/admin")) return null;
 
   return (
@@ -46,7 +55,7 @@ export default function Header({ menu }: { menu: MenuGrup[] }) {
       }`}
     >
       <div className="container flex h-[4.5rem] items-center justify-between gap-4 lg:h-[5.25rem]">
-        <Link href="/" className="flex items-center gap-2" onClick={closeMobile}>
+        <Link href="/" scroll className="relative z-10 flex items-center gap-2" onClick={anaEkran}>
           <Image
             src="/logo-mark.png"
             alt="T7 İnşaat"
@@ -84,7 +93,7 @@ export default function Header({ menu }: { menu: MenuGrup[] }) {
               <ChevronDown className={`h-3.5 w-3.5 transition-transform ${desktopProductsOpen ? "rotate-180" : ""}`} />
             </button>
             <div
-              className={`absolute left-1/2 top-full z-50 w-[42rem] -translate-x-1/2 pt-3 transition-all duration-200 ${
+              className={`absolute left-1/2 top-full z-50 w-[min(42rem,calc(100vw-3rem))] -translate-x-1/2 pt-3 transition-all duration-200 ${
                 desktopProductsOpen ? "visible opacity-100" : "invisible opacity-0"
               }`}
             >

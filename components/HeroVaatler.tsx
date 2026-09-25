@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import HeroVideo from "@/components/HeroVideo";
 
-const POSTER = "/hero-poster.jpg?v=7";
+/** Video yüklenene kadar görünen kapak. Slayt değişince video yeniden başlamasın diye video bu bileşenin dışında durur. */
+const POSTER = "/hero-poster.jpg?v=8";
 
 const SLAYTLAR = [
   {
@@ -120,7 +121,7 @@ export default function HeroVaatler({ etiket }: { etiket: string }) {
   return (
     <>
       <div className="absolute inset-0 overflow-hidden">
-        <div key={indeks} className={hareket ? "hero-kenburns absolute inset-0" : "absolute inset-0"}>
+        <div className={hareket ? "hero-kenburns absolute inset-0" : "absolute inset-0"}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={POSTER} alt="" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" decoding="async" />
           <HeroVideo />
@@ -141,7 +142,7 @@ export default function HeroVaatler({ etiket }: { etiket: string }) {
           <div aria-live="polite">
             <h1
               key={`${etiketAdi}-b`}
-              className="text-balance text-[2.15rem] font-bold leading-tight tracking-tighter text-white sm:text-5xl lg:text-[4.35rem]"
+              className="text-balance text-[clamp(1.85rem,8vw,4.35rem)] font-bold leading-tight tracking-tighter text-white"
             >
               {slayt.parcalar.map((parca, i) => (
                 <span key={`${etiketAdi}-${i}`}>

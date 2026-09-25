@@ -1,7 +1,8 @@
+/** Next 16'da middleware.ts yerine proxy.ts kullanılır. Yönetim paneli ve admin API oturum ister. */
 import { NextRequest, NextResponse } from "next/server";
 import { OTURUM_CEREZI, oturumToken } from "@/lib/admin-oturum";
 
-export function middleware(istek: NextRequest) {
+export function proxy(istek: NextRequest) {
   const yol = istek.nextUrl.pathname;
   const token = istek.cookies.get(OTURUM_CEREZI)?.value;
 

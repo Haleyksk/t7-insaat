@@ -32,9 +32,6 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
-      letterSpacing: {
-        industrial: "0.22em",
-      },
     },
   },
   plugins: [],

@@ -30,7 +30,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
         <div>
           <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-brand-mint">{product.group}</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white">{product.title}</h1>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{product.title}</h1>
           <div className="mt-8 space-y-4">
             {product.body.map((paragraph) => (
               <p key={paragraph.slice(0, 40)} className="text-sm leading-relaxed text-zinc-300 lg:text-base">

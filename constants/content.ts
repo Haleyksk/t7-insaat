@@ -1,13 +1,3 @@
-export const site = {
-  name: "T7 İnşaat",
-  shortName: "T7",
-  email: "info@t7insaat.com",
-  phone: "0380 549 76 76",
-  phoneHref: "tel:+903805497676",
-  location: "Düzce",
-  area: "42.000 m²",
-};
-
 export type Genel = {
   name: string;
   email: string;
@@ -57,8 +47,6 @@ export function urunMenu(urunler: Product[]): MenuGrup[] {
   }
   return [...gruplar.entries()].map(([label, items]) => ({ label, items }));
 }
-
-export const aboutText = genelVarsayilan.aboutText;
 
 export type Reference = {
   slug: string;
@@ -262,55 +250,3 @@ export const products: Product[] = [
   },
 ];
 
-export const productNav = [
-  {
-    label: "Endüstriyel Yapı Sistemleri",
-    items: [
-      { href: "/urunler/endustriyel-celik-yapilar", label: "Endüstriyel Çelik Yapılar" },
-      { href: "/urunler/cfs-hafif-celik-depolar", label: "CFS Hafif Çelik Depolar" },
-      { href: "/urunler/hibrit-beton-yapilar", label: "Hibrit Beton Yapılar" },
-    ],
-  },
-  {
-    label: "Betonarme Konut İnşaatı",
-    items: [{ href: "/urunler/betonarme-konut-insaati", label: "Kaba İnşaat ve Malzeme Tedariği" }],
-  },
-  {
-    label: "Çelik Ev",
-    items: [{ href: "/urunler/celik-ev", label: "Çelik Ev" }],
-  },
-  {
-    label: "Etriye / Çiroz Satışı",
-    items: [{ href: "/urunler/etriye-ciroz", label: "Etriye / Çiroz" }],
-  },
-  {
-    label: "C ve M Çelik Profil Satışı",
-    items: [{ href: "/urunler/c-m-celik-profil", label: "C ve M Çelik Profil" }],
-  },
-  {
-    label: "Treyler",
-    items: [
-      { href: "/urunler/treyler", label: "Treyler" },
-      { href: "/urunler/sal-grubu", label: "Sal Grubu" },
-      { href: "/urunler/damper-grubu", label: "Damper Grubu" },
-      { href: "/urunler/lpg-tankerleri", label: "LPG Tankerleri" },
-    ],
-  },
-];
-
-export const homeProducts = products.filter((p) =>
-  [
-    "endustriyel-celik-yapilar",
-    "cfs-hafif-celik-depolar",
-    "hibrit-beton-yapilar",
-    "betonarme-konut-insaati",
-    "celik-ev",
-    "etriye-ciroz",
-    "c-m-celik-profil",
-    "treyler",
-  ].includes(p.slug),
-);
-
-export function getProduct(slug: string) {
-  return products.find((item) => item.slug === slug);
-}

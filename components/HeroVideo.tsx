@@ -2,9 +2,9 @@
 
 import { useLayoutEffect, useRef } from "react";
 
-const POSTER = "/hero-poster.jpg?v=7";
-const VIDEO = "/hero.mp4?v=7";
-const HIZ = 1.2;
+/** ?v=8 tarayıcının eski videoyu önbellekten açmasını engeller. */
+const POSTER = "/hero-poster.jpg?v=8";
+const VIDEO = "/hero.mp4?v=8";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -16,9 +16,7 @@ export default function HeroVideo() {
       video.pause();
       return;
     }
-    video.playbackRate = HIZ;
     const baslat = () => {
-      video.playbackRate = HIZ;
       void video.play().catch(() => undefined);
     };
     baslat();
