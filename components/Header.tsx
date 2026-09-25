@@ -125,6 +125,12 @@ export default function Header({ menu }: { menu: MenuGrup[] }) {
             Referanslar
           </Link>
           <Link
+            href="/blog"
+            className="text-[13px] font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
+          >
+            Blog
+          </Link>
+          <Link
             href="/iletisim"
             className="text-[13px] font-medium tracking-wide text-zinc-300 transition-colors hover:text-white"
           >

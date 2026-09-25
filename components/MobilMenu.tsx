@@ -114,6 +114,9 @@ export default function MobilMenu({ acik, kapat, menu }: Props) {
           <Link href="/projeler" onClick={kapat} className={baglanti}>
             Referanslar
           </Link>
+          <Link href="/blog" onClick={kapat} className={baglanti}>
+            Blog
+          </Link>
           <Link href="/iletisim" onClick={kapat} className={baglanti}>
             İletişim
           </Link>
