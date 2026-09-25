@@ -39,6 +39,7 @@ const videoYazilari: AkisYazi[] = [
         baslik: "İş",
         ozet: "Türsan Park Dinlenme Tesisleri’ndeki toplu şarj alanı.",
         maddeler: ["Çelik konstrüksiyon imalatı ve montajı T7 İnşaat’ta.", "Altyapı işi aynı teslimatın içinde."],
+        gorsel: { src: "/referanslar/istasyon-1.jpg", alt: "Türsan Park şarj istasyonu." },
       },
     ],
     kategori: "video",
@@ -92,14 +93,22 @@ const catiKarsilastirma: AkisYazi = {
   cta: "Saçak boyu ve kaplama tipini yazın.",
   urun: { href: "/urunler/endustriyel-celik-yapilar", etiket: "Endüstriyel çelik yapılar" },
   kartlar: [],
-  bolumler: [
-    {
-      id: "karsilastir",
-      baslik: "Ne değişti",
-      ozet: "Solda kaplama henüz tamamlanmamış saçak, sağda kapanmış çatı.",
-      maddeler: ["Çizgiyi sürükleyerek iki hali görün.", "İki kare de hayvancılık tesisi galerisinden."],
-    },
-  ],
+    bolumler: [
+      {
+        id: "acik",
+        baslik: "Kaplama sürerken",
+        ozet: "Aynı hayvancılık tesisinde saçak henüz kapanmamış.",
+        maddeler: [],
+        gorsel: { src: "/referanslar/hayvancilik-1.webp", alt: "Çatı kaplaması sürerken." },
+      },
+      {
+        id: "kapali",
+        baslik: "Kaplama bitince",
+        ozet: "Saçak kapandıktan sonraki hal.",
+        maddeler: ["İki kare de hayvancılık tesisi galerisinden."],
+        gorsel: { src: "/referanslar/hayvancilik-3.webp", alt: "Kaplaması biten saçak." },
+      },
+    ],
   kategori: "oncesi",
   tip: "before_after",
   okuma: "1 dk",
@@ -111,17 +120,45 @@ const catiKarsilastirma: AkisYazi = {
   sonra: { src: "/referanslar/hayvancilik-3.webp", alt: "Kaplaması biten saçak." },
 };
 
+const ornek: Record<string, { src: string; alt: string }> = {
+  "1000-m2-celik-fabrika:kapsam": { src: "/blog/kaynak.jpg", alt: "Çelik imalatında kaynak." },
+  "1000-m2-celik-fabrika:vinc": { src: "/referanslar/prisma-2.webp", alt: "Prisma Mobilya. Yüksek açıklıklı çelik tesis." },
+  "1000-m2-celik-fabrika:karsilastirma": { src: "/referanslar/prisma-5.webp", alt: "Tamamlanmış endüstriyel cephe." },
+  "celik-depo-betonarme:sure": { src: "/blog/depo.jpg", alt: "Örnek depo içi. Çelik taşıyıcılı hacim." },
+  "celik-depo-betonarme:yangin": { src: "/referanslar/prisma-1.webp", alt: "Çelik birleşim." },
+  "cfs-hafif-celik-depo:nedir": { src: "/blog/depo.jpg", alt: "Örnek depo. Hafif sistemin hedeflediği hacim." },
+  "cfs-hafif-celik-depo:sinir": { src: "/referanslar/prisma-1.webp", alt: "Ağır çelik birleşim. Vinçli açıklıkta ince profil yetmez." },
+  "celik-ev-betonarme:giris": { src: "/blog/ev.jpg", alt: "Örnek modern konut. T7 projesi değildir." },
+  "celik-ev-betonarme:sure": { src: "/blog/ev.jpg", alt: "Örnek konut cephesi." },
+  "celik-ev-betonarme:omur": { src: "/blog/ev.jpg", alt: "Örnek konut. Bakım ve cephe." },
+  "hibrit-beton-celik-cati:nerede": { src: "/referanslar/prisma-5.webp", alt: "Geniş açıklıklı endüstriyel yapı." },
+  "hibrit-beton-celik-cati:birlesim": { src: "/referanslar/prisma-1.webp", alt: "Çelik birleşim detayı." },
+  "hibrit-beton-celik-cati:sor": { src: "/blog/donati.jpg", alt: "Betonarme donatı. Kolon tarafının işi." },
+  "etriye-ciroz-siparis:etriye": { src: "/blog/donati.jpg", alt: "Betonarme döşemede demir donatı." },
+  "etriye-ciroz-siparis:ciroz": { src: "/blog/donati.jpg", alt: "Donatı yerleşimi." },
+  "c-ve-m-profil:c": { src: "/blog/depo.jpg", alt: "Çelik taşıyıcılı iç hacim." },
+  "c-ve-m-profil:m": { src: "/blog/kaynak.jpg", alt: "Çelik imalat." },
+  "damperli-dorse-cesitleri:tipler": { src: "/blog/hafriyat.jpg", alt: "Hafriyat sahası. Damperin boşalttığı dökme yük." },
+  "damperli-dorse-cesitleri:secim": { src: "/blog/hafriyat.jpg", alt: "Saha zemini ve dökme malzeme." },
+  "hayvancilik-celik-yapi:kapsam": { src: "/referanslar/hayvancilik-3.webp", alt: "Kaplaması biten saçak." },
+};
+
 function zenginlestir(yazi: BlogYazi): AkisYazi {
   const ek = sunum[yazi.slug] ?? {};
-  const galeri = ek.galeri ?? yazi.bolumler.flatMap((b) => (b.gorsel ? [b.gorsel] : []));
-  return {
+  const bolumler = yazi.bolumler.map((bolum) => ({
+    ...bolum,
+    gorsel: bolum.gorsel ?? ornek[`${yazi.slug}:${bolum.id}`],
+  }));
+  const galeri = ek.galeri ?? bolumler.flatMap((b) => (b.gorsel ? [b.gorsel] : []));
+    return {
     ...yazi,
+    bolumler,
     kategori: ek.kategori ?? "ipuclari",
     tip: ek.tip ?? (galeri.length > 1 ? "carousel" : "standard"),
     okuma: ek.okuma ?? "1 dk",
     tarih: ek.tarih ?? "Eylül 2026",
     begeni: 0,
-    kapak: ek.kapak ?? galeri[0]?.src ?? null,
+    kapak: ek.kapak ?? galeri[0]?.src ?? bolumler.find((b) => b.gorsel)?.gorsel?.src ?? null,
     galeri,
     ...ek,
   };
