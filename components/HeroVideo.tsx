@@ -2,9 +2,10 @@
 
 import { useLayoutEffect, useRef } from "react";
 
-/** ?v=8 tarayıcının eski videoyu önbellekten açmasını engeller. */
+/** ?v= sürümü tarayıcının eski videoyu önbellekten açmasını engeller. */
 const POSTER = "/hero-poster.jpg?v=8";
-const VIDEO = "/hero.mp4?v=8";
+const MASAUSTU = "/hero.mp4?v=8";
+const MOBIL = "/hero-mobil.mp4?v=1";
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -12,16 +13,28 @@ export default function HeroVideo() {
   useLayoutEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       video.pause();
       return;
     }
+
     const baslat = () => {
       void video.play().catch(() => undefined);
     };
     baslat();
+    video.addEventListener("loadeddata", baslat);
     video.addEventListener("canplay", baslat);
-    return () => video.removeEventListener("canplay", baslat);
+    window.addEventListener("touchstart", baslat, { once: true, passive: true });
+
+    return () => {
+      video.removeEventListener("loadeddata", baslat);
+      video.removeEventListener("canplay", baslat);
+      window.removeEventListener("touchstart", baslat);
+    };
   }, []);
 
   return (
@@ -32,11 +45,12 @@ export default function HeroVideo() {
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       poster={POSTER}
       aria-hidden
     >
-      <source src={VIDEO} type="video/mp4" />
+      <source src={MOBIL} type="video/mp4" media="(max-width: 767px)" />
+      <source src={MASAUSTU} type="video/mp4" />
     </video>
   );
 }

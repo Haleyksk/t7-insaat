@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import GorunenVideo from "@/components/GorunenVideo";
 import { referanslariOku } from "@/lib/referanslar";
 
 export const revalidate = 60;
@@ -33,17 +34,11 @@ export default async function ProjelerPage() {
             >
               <div className="relative aspect-[16/10] lg:col-span-5 lg:aspect-auto lg:min-h-[18rem]">
                 {item.video ? (
-                  <video
-                    className="absolute inset-0 h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                  <GorunenVideo
+                    src={item.video}
                     poster={item.cover}
-                    preload="metadata"
-                  >
-                    <source src={item.video} type="video/mp4" />
-                  </video>
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 ) : (
                   <Image
                     src={item.cover}

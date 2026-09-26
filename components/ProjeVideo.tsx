@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   src: string;
@@ -10,16 +10,35 @@ type Props = {
 
 export default function ProjeVideo({ src, poster, baslik }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const elleDurdu = useRef(false);
   const [durdu, setDurdu] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const gozlemci = new IntersectionObserver(([kayit]) => {
+      if (!kayit.isIntersecting) {
+        video.pause();
+        return;
+      }
+      if (!elleDurdu.current) void video.play().catch(() => undefined);
+    });
+    gozlemci.observe(video);
+    return () => gozlemci.disconnect();
+  }, []);
 
   const degistir = () => {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
+      elleDurdu.current = false;
       void video.play();
       setDurdu(false);
       return;
     }
+    elleDurdu.current = true;
     video.pause();
     setDurdu(true);
   };
@@ -39,7 +58,7 @@ export default function ProjeVideo({ src, poster, baslik }: Props) {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           poster={poster}
         >
           <source src={src} type="video/mp4" />

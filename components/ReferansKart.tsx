@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import GorunenVideo from "@/components/GorunenVideo";
 import type { Reference } from "@/constants/content";
 
 type Props = {
@@ -11,23 +12,16 @@ type Props = {
   oncelik?: boolean;
 };
 
+const YAZI_KARARTMA =
+  "pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[62%] bg-gradient-to-t from-brand-dark via-brand-dark/45 to-transparent";
+
 function VideoKart({ item }: { item: Reference }) {
+  if (!item.video) return null;
   return (
     <article className="overflow-hidden border border-white/10 bg-brand-card">
       <div className="relative aspect-[16/10] overflow-hidden bg-brand-card">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={item.cover}
-          aria-hidden
-        >
-          <source src={item.video} type="video/mp4" />
-        </video>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/25 to-transparent" />
+        <GorunenVideo src={item.video} poster={item.cover} className="absolute inset-0 h-full w-full object-cover" />
+        <div className={YAZI_KARARTMA} />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 p-5">
           <div className="mb-3 flex items-center gap-3">
             <div className="relative h-10 w-10 overflow-hidden bg-white">
@@ -124,7 +118,7 @@ function FotoKart({ item, adim, oncelik = false }: Props) {
           })}
         </div>
 
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/25 to-transparent" />
+        <div className={YAZI_KARARTMA} />
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 p-5">
           <div className="mb-3 flex items-center gap-3">
